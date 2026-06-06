@@ -95,11 +95,13 @@ class DatabaseService {
   Future<void> saveUserProfile(UserProfile user) async {
     final db = await instance.database;
 
-    await db.insert(
+    await db.delete(
       'brugere',
-      user.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
+      where: 'bruger_nr = ?',
+      whereArgs: [user.brugerNr],
     );
+
+    await db.insert('brugere', user.toMap());
   }
 
   // ---------------------------------------------------------------------------
@@ -386,13 +388,22 @@ ORDER BY name COLLATE NOCASE
     required String user,
     required String date,
     required String tid,
+    String? userName,
   }) async {
     final db = await instance.database;
 
+    final args = userName == null || userName.trim().isEmpty
+        ? [user, normalizeDate(date), tid]
+        : [user, userName.trim(), normalizeDate(date), tid];
+
+    final whereClause = userName == null || userName.trim().isEmpty
+        ? 'user = ? AND date = ? AND tid = ?'
+        : '(user = ? OR user = ?) AND date = ? AND tid = ?';
+
     return await db.query(
       'spise_log',
-      where: 'user = ? AND date = ? AND tid = ?',
-      whereArgs: [user, normalizeDate(date), tid],
+      where: whereClause,
+      whereArgs: args,
       orderBy: '_id ASC',
     );
   }

@@ -11,6 +11,11 @@ import 'input_screen.dart';
 import 'user_setup_screen.dart';
 import 'local_foods_screen.dart';
 import 'meals_screen.dart';
+import 'dart:io';
+import 'barcode_scan_screen.dart';
+import 'local_food_edit_screen.dart';
+import '../services/barcode_service.dart';
+import 'calorie_calculator_screen.dart';
 
 int streak = 0;
 
@@ -173,12 +178,12 @@ DTU Fødevareinstituttet
                     children: [
                       Text(
                         dateText(pageIndex),
-                        style: const TextStyle(fontSize: AppSizes.title),
+                        style: TextStyle(fontSize: AppSizes.title),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         dayLabel(pageIndex),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: AppSizes.small,
                           color: Colors.black54,
                         ),
@@ -187,7 +192,7 @@ DTU Fødevareinstituttet
                   ),
                 ),
                 const SizedBox(height: 12),
-                Text(name, style: const TextStyle(fontSize: AppSizes.heading)),
+                Text(name, style: TextStyle(fontSize: AppSizes.heading)),
                 const SizedBox(height: 10),
                 FutureBuilder<int>(
                   future: DatabaseService.instance.getStreakForDate(
@@ -199,7 +204,7 @@ DTU Fødevareinstituttet
 
                     return Text(
                       'Streak: $streak dage',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: AppSizes.normal,
                         color: Colors.black54,
                       ),
@@ -278,7 +283,7 @@ DTU Fødevareinstituttet
                     ),
                     Text(
                       user1Name,
-                      style: const TextStyle(fontSize: AppSizes.normal),
+                      style: TextStyle(fontSize: AppSizes.normal),
                     ),
                     const SizedBox(width: 24),
                     Radio<String>(
@@ -294,7 +299,7 @@ DTU Fødevareinstituttet
                     ),
                     Text(
                       user2Name,
-                      style: const TextStyle(fontSize: AppSizes.normal),
+                      style: TextStyle(fontSize: AppSizes.normal),
                     ),
                   ],
                 ),
@@ -360,34 +365,70 @@ DTU Fødevareinstituttet
                   ],
                 ),
                 const Spacer(),
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.brown,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 10,
+
+                if (Platform.isAndroid)
+                  Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.brown,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 32,
+                          vertical: 10,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                    ),
-                    onPressed: () {
-                      SystemNavigator.pop();
-                    },
-                    child: const Text(
-                      'Exit',
-                      style: TextStyle(
-                        fontSize: AppSizes.heading,
-                        letterSpacing: 2,
+                      onPressed: () {
+                        SystemNavigator.pop();
+                      },
+                      child: Text(
+                        'Exit',
+                        style: TextStyle(
+                          fontSize: AppSizes.heading,
+                          letterSpacing: 2,
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> scanFood() async {
+    final barcode = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const BarcodeScanScreen()),
+    );
+
+    if (!mounted) return;
+    if (barcode == null) return;
+
+    final food = await BarcodeService.getFood(barcode);
+    if (!mounted) return;
+
+    if (food == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Fødevare ikke fundet')));
+      return;
+    }
+
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => LocalFoodEditScreen(
+          name: food['name']?.toString() ?? '',
+          kcal: food['kcal']?.toString() ?? '',
+          khyd: food['carbs']?.toString() ?? '',
+          fedt: food['fat']?.toString() ?? '',
+          prot: food['protein']?.toString() ?? '',
+          alk: '0',
         ),
       ),
     );
@@ -397,7 +438,7 @@ DTU Fødevareinstituttet
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'SpiseTavle',
           style: TextStyle(
             fontSize: AppSizes.title + 4,
@@ -409,6 +450,26 @@ DTU Fødevareinstituttet
           PopupMenuButton<String>(
             icon: const Icon(Icons.more_vert),
             onSelected: (value) async {
+              if (value == 'calorie') {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const CalorieCalculatorScreen(),
+                  ),
+                );
+                final changed = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const CalorieCalculatorScreen(),
+                  ),
+                );
+
+                if (changed == true) {
+                  await loadUser();
+                  setState(() {});
+                }
+                await loadUser();
+              }
               if (value == 'users') {
                 await openUserSetup();
               }
@@ -417,6 +478,9 @@ DTU Fødevareinstituttet
                   context,
                   MaterialPageRoute(builder: (_) => const LocalFoodsScreen()),
                 );
+              }
+              if (value == 'scanfood') {
+                await scanFood();
               }
               if (value == 'about') {
                 showAboutDialogSpiseTavle();
@@ -430,10 +494,16 @@ DTU Fødevareinstituttet
                 setState(() {});
               }
             },
-            itemBuilder: (context) => const [
+            itemBuilder: (context) => [
+              if (Platform.isIOS)
+                const PopupMenuItem(
+                  value: 'scanfood',
+                  child: Text('Scan fødevare'),
+                ),
               PopupMenuItem(value: 'localfoods', child: Text('Egne fødevarer')),
               PopupMenuItem(value: 'meals', child: Text('Måltider')),
               PopupMenuItem(value: 'users', child: Text('Brugeropsætning')),
+              PopupMenuItem(value: 'calorie', child: Text('Kalorieberegner')),
               PopupMenuItem(value: 'about', child: Text('Om')),
             ],
           ),

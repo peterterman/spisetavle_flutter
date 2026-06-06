@@ -36,10 +36,7 @@ class NutrientRow extends StatelessWidget {
         children: [
           SizedBox(
             width: 70,
-            child: Text(
-              name,
-              style: const TextStyle(fontSize: AppSizes.normal),
-            ),
+            child: Text(name, style: TextStyle(fontSize: AppSizes.normal)),
           ),
           Expanded(
             child: LinearProgressIndicator(
@@ -70,7 +67,7 @@ class NutrientRow extends StatelessWidget {
             child: Text(
               goal,
               textAlign: TextAlign.right,
-              style: const TextStyle(fontSize: AppSizes.normal),
+              style: TextStyle(fontSize: AppSizes.normal),
             ),
           ),
         ],

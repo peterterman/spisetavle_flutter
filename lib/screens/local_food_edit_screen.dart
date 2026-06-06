@@ -7,7 +7,23 @@ import '../theme/app_colors.dart';
 class LocalFoodEditScreen extends StatefulWidget {
   final FoodItem? food;
 
-  const LocalFoodEditScreen({super.key, this.food});
+  final String name;
+  final String kcal;
+  final String khyd;
+  final String fedt;
+  final String prot;
+  final String alk;
+
+  const LocalFoodEditScreen({
+    super.key,
+    this.food,
+    this.name = '',
+    this.kcal = '',
+    this.khyd = '',
+    this.fedt = '',
+    this.prot = '',
+    this.alk = '0',
+  });
 
   @override
   State<LocalFoodEditScreen> createState() => _LocalFoodEditScreenState();
@@ -24,19 +40,35 @@ class _LocalFoodEditScreenState extends State<LocalFoodEditScreen> {
   void initState() {
     super.initState();
 
-    nameController = TextEditingController(text: widget.food?.navn ?? '');
-    kcalController = TextEditingController(
-      text: widget.food?.kcal.toString() ?? '',
-    );
-    khydController = TextEditingController(
-      text: widget.food?.khyd.toString() ?? '',
-    );
-    protController = TextEditingController(
-      text: widget.food?.prot.toString() ?? '',
-    );
-    fedtController = TextEditingController(
-      text: widget.food?.fedt.toString() ?? '',
-    );
+    if (widget.food != null) {
+      nameController = TextEditingController(text: widget.food!.navn);
+
+      kcalController = TextEditingController(
+        text: widget.food!.kcal.toString(),
+      );
+
+      khydController = TextEditingController(
+        text: widget.food!.khyd.toString(),
+      );
+
+      protController = TextEditingController(
+        text: widget.food!.prot.toString(),
+      );
+
+      fedtController = TextEditingController(
+        text: widget.food!.fedt.toString(),
+      );
+    } else {
+      nameController = TextEditingController(text: widget.name);
+
+      kcalController = TextEditingController(text: widget.kcal);
+
+      khydController = TextEditingController(text: widget.khyd);
+
+      protController = TextEditingController(text: widget.prot);
+
+      fedtController = TextEditingController(text: widget.fedt);
+    }
   }
 
   double v(TextEditingController c) =>

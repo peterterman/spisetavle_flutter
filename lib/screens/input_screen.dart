@@ -334,7 +334,7 @@ class _InputScreenState extends State<InputScreen>
                     child: Text(
                       row['name']?.toString() ?? '',
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: AppSizes.normal),
+                      style: TextStyle(fontSize: AppSizes.normal),
                     ),
                   ),
                   SizedBox(
@@ -342,7 +342,7 @@ class _InputScreenState extends State<InputScreen>
                     child: Text(
                       amountText(row['amount']),
                       textAlign: TextAlign.right,
-                      style: const TextStyle(fontSize: AppSizes.normal),
+                      style: TextStyle(fontSize: AppSizes.normal),
                     ),
                   ),
                 ],
@@ -520,7 +520,7 @@ class _InputScreenState extends State<InputScreen>
                 alignment: Alignment.centerLeft,
                 child: Text(
                   '${widget.date} - ${widget.userName}',
-                  style: const TextStyle(fontSize: AppSizes.heading),
+                  style: TextStyle(fontSize: AppSizes.heading),
                 ),
               ),
               TabBar(

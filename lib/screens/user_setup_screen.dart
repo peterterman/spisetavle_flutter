@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../database/database_service.dart';
 import '../models/user_profile.dart';
+import '../theme/app_sizes.dart';
 
 class UserSetupScreen extends StatefulWidget {
   const UserSetupScreen({super.key});
@@ -124,7 +124,7 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Vælg bruger', style: TextStyle(fontSize: 22)),
+              Text('Vælg bruger', style: TextStyle(fontSize: AppSizes.title)),
 
               Row(
                 children: [
@@ -136,7 +136,10 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
                       loadUser();
                     },
                   ),
-                  const Text('Bruger 1', style: TextStyle(fontSize: 20)),
+                  Text(
+                    'Bruger 1',
+                    style: TextStyle(fontSize: AppSizes.heading),
+                  ),
                   const SizedBox(width: 22),
                   Radio<String>(
                     value: 'bruger2',
@@ -146,7 +149,10 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
                       loadUser();
                     },
                   ),
-                  const Text('Bruger 2', style: TextStyle(fontSize: 20)),
+                  Text(
+                    'Bruger 2',
+                    style: TextStyle(fontSize: AppSizes.heading),
+                  ),
                 ],
               ),
 
@@ -161,7 +167,7 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
               inputField('Alder', ageController),
 
               const SizedBox(height: 10),
-              const Text('Køn', style: TextStyle(fontSize: 22)),
+              Text('Køn', style: TextStyle(fontSize: AppSizes.title)),
 
               Row(
                 children: [
@@ -172,7 +178,7 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
                       setState(() => sex = value!);
                     },
                   ),
-                  const Text('Kvinde', style: TextStyle(fontSize: 20)),
+                  Text('Kvinde', style: TextStyle(fontSize: AppSizes.heading)),
                   const SizedBox(width: 22),
                   Radio<String>(
                     value: 'Mand',
@@ -181,7 +187,7 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
                       setState(() => sex = value!);
                     },
                   ),
-                  const Text('Mand', style: TextStyle(fontSize: 20)),
+                  Text('Mand', style: TextStyle(fontSize: AppSizes.heading)),
                 ],
               ),
 
@@ -199,7 +205,10 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
                       ),
                     ),
                     onPressed: saveUser,
-                    child: const Text('Gem', style: TextStyle(fontSize: 22)),
+                    child: Text(
+                      'Gem',
+                      style: TextStyle(fontSize: AppSizes.title),
+                    ),
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
@@ -212,9 +221,9 @@ class _UserSetupScreenState extends State<UserSetupScreen> {
                       ),
                     ),
                     onPressed: () => Navigator.pop(context, false),
-                    child: const Text(
+                    child: Text(
                       'Fortryd',
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontSize: AppSizes.title),
                     ),
                   ),
                 ],

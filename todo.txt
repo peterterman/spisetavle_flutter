@@ -1,6 +1,71 @@
-indtastning
-	rediger / slet
-	funktioner
+iphone:
+
+Scanner
+Kalorieberegner
+Større tekst i lister
+Historik: klik på gl dato viser startskærm for den dag
+
+Ja. Dokumentet siger, at **Kalorieberegner** skal ligge i menuen og kunne overføre beregnede data til eksisterende bruger, evt. med keto-fokus. På billedet side 11 ses felter for bruger, køn, alder, vægt, højde, aktivitetsniveau, keto og valg mellem vedligehold/vægttab. 
+
+Foreslået første version:
+
+```text
+Menu → Kalorieberegner
+```
+
+Beregner:
+
+```text
+kcal
+kulhydrat
+fedt
+protein
+```
+
+og gemmer dem i `brugere`-tabellen for Bruger1 eller Bruger2.
+
+Formel:
+
+```text
+BMR mand   = 10 * vægt + 6.25 * højde - 5 * alder + 5
+BMR kvinde = 10 * vægt + 6.25 * højde - 5 * alder - 161
+
+TDEE = BMR * aktivitetsfaktor
+```
+
+Makro-forslag:
+
+```text
+Protein = 1.7 g pr kg kropsvægt
+Fedt = 30% af kcal / 9
+Kulhydrat = resten / 4
+```
+
+Ved keto:
+
+```text
+Kulhydrat = 25 g
+Protein = 1.7 g pr kg
+Fedt = resten af kcal / 9
+```
+
+Vægttab:
+
+```text
+Vedligehold = TDEE
+Tabe 0.5 kg/uge = TDEE - 500
+Tabe 1.0 kg/uge = TDEE - 1000
+```
+
+Næste rettelser bliver:
+
+```text
+1. Opret lib/screens/calorie_calculator_screen.dart
+2. Tilføj menupunkt “Kalorieberegner” i home_screen.dart
+3. Gem resultat i eksisterende brugerprofil
+```
+
+
 	
 	
 

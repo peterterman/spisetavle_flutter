@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../database/database_service.dart';
 import '../theme/app_colors.dart';
+import '../theme/app_sizes.dart';
 
 class DayViewScreen extends StatelessWidget {
   final String user;
@@ -20,6 +20,7 @@ class DayViewScreen extends StatelessWidget {
       user: user,
       date: date,
       tid: tid,
+      userName: userName,
     );
   }
 
@@ -34,9 +35,12 @@ class DayViewScreen extends StatelessWidget {
   }
 
   Widget headerRow() {
-    const hStyle = TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+    final hStyle = TextStyle(
+      fontSize: AppSizes.normal,
+      fontWeight: FontWeight.w500,
+    );
 
-    return const Row(
+    return Row(
       children: [
         Expanded(child: Text('Mad', style: hStyle)),
         SizedBox(
@@ -64,7 +68,7 @@ class DayViewScreen extends StatelessWidget {
   }
 
   Widget dataRow(Map<String, Object?> row) {
-    const rowStyle = TextStyle(fontSize: 15);
+    final rowStyle = TextStyle(fontSize: AppSizes.normal);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3),
@@ -148,13 +152,16 @@ class DayViewScreen extends StatelessWidget {
 
   Widget sumRow(List<Map<String, Object?>> rows) {
     final sums = sumRows(rows);
-    const rowStyle = TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+    final rowStyle = TextStyle(
+      fontSize: AppSizes.normal,
+      fontWeight: FontWeight.w500,
+    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3),
       child: Row(
         children: [
-          const Expanded(child: Text('Sum', style: rowStyle)),
+          Expanded(child: Text('Sum', style: rowStyle)),
           const SizedBox(width: 52),
           SizedBox(
             width: 56,
@@ -211,10 +218,7 @@ class DayViewScreen extends StatelessWidget {
               Center(
                 child: Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
               ),
               const Divider(height: 8),
@@ -243,7 +247,7 @@ class DayViewScreen extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(title, style: const TextStyle(fontSize: 24)),
+                child: Text(title, style: TextStyle(fontSize: AppSizes.title)),
               ),
               const SizedBox(height: 18),
               headerRow(),
@@ -271,7 +275,7 @@ class DayViewScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Ok', style: TextStyle(fontSize: 18)),
+                child: Text('Ok', style: TextStyle(fontSize: AppSizes.heading)),
               ),
             ],
           ),

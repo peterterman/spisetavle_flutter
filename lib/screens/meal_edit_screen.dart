@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../database/database_service.dart';
 import '../models/food_item.dart';
 import '../theme/app_colors.dart';
@@ -172,9 +171,12 @@ class _MealEditScreenState extends State<MealEditScreen> {
   }
 
   Widget headerRow() {
-    const style = TextStyle(fontSize: 15, fontWeight: FontWeight.w500);
+    final style = TextStyle(
+      fontSize: AppSizes.normal,
+      fontWeight: FontWeight.w500,
+    );
 
-    return const Row(
+    return Row(
       children: [
         SizedBox(width: 44),
         Expanded(child: Text('Mad', style: style)),
@@ -219,7 +221,7 @@ class _MealEditScreenState extends State<MealEditScreen> {
                 child: Text(
                   row['name']?.toString() ?? '',
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: AppSizes.normal),
+                  style: TextStyle(fontSize: AppSizes.normal),
                 ),
               ),
             ),
@@ -231,7 +233,7 @@ class _MealEditScreenState extends State<MealEditScreen> {
               child: Text(
                 value(row['amount']),
                 textAlign: TextAlign.right,
-                style: const TextStyle(fontSize: AppSizes.normal),
+                style: TextStyle(fontSize: AppSizes.normal),
               ),
             ),
           ),
@@ -242,7 +244,7 @@ class _MealEditScreenState extends State<MealEditScreen> {
               child: Text(
                 value(row['kcal']),
                 textAlign: TextAlign.right,
-                style: const TextStyle(fontSize: AppSizes.normal),
+                style: TextStyle(fontSize: AppSizes.normal),
               ),
             ),
           ),

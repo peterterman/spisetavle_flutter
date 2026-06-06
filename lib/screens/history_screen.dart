@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../database/database_service.dart';
 import '../theme/app_colors.dart';
+import 'day_view_screen.dart';
 
 class HistoryScreen extends StatelessWidget {
   final String user;
@@ -56,42 +56,56 @@ class HistoryScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final row = rows[index];
 
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 8,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: Text(row['date'].toString()),
-                          ),
-                          Expanded(
-                            child: Text(
-                              value(row['khyd']),
-                              textAlign: TextAlign.right,
+                    return InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DayViewScreen(
+                              user: user,
+                              date: row['date'].toString(),
+                              userName: userName,
                             ),
                           ),
-                          Expanded(
-                            child: Text(
-                              value(row['fedt']),
-                              textAlign: TextAlign.right,
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 8,
+                          horizontal: 8,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Text(row['date'].toString()),
                             ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              value(row['prot']),
-                              textAlign: TextAlign.right,
+                            Expanded(
+                              child: Text(
+                                value(row['khyd']),
+                                textAlign: TextAlign.right,
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              value(row['kcal']),
-                              textAlign: TextAlign.right,
+                            Expanded(
+                              child: Text(
+                                value(row['fedt']),
+                                textAlign: TextAlign.right,
+                              ),
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Text(
+                                value(row['prot']),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                value(row['kcal']),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
