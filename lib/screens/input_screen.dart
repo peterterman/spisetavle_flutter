@@ -355,17 +355,47 @@ class _InputScreenState extends State<InputScreen>
   }
 
   Widget foodTextField() {
-    return TextField(
-      controller: foodController,
-      decoration: const InputDecoration(
-        labelText: 'Angiv fødevare',
-        isDense: true,
-      ),
+    return Autocomplete<String>(
+      optionsViewOpenDirection: OptionsViewOpenDirection.up,
+      optionsBuilder: (value) async {
+        if (value.text.trim().isEmpty) {
+          return const Iterable<String>.empty();
+        }
+
+        return await DatabaseService.instance.searchFoods(value.text);
+      },
+      onSelected: (value) {
+        foodController.text = value;
+        amountController.text = '100';
+        setState(() {});
+      },
+      fieldViewBuilder: (context, controller, focusNode, onFieldSubmitted) {
+        controller.text = foodController.text;
+        controller.selection = TextSelection.fromPosition(
+          TextPosition(offset: controller.text.length),
+        );
+
+        controller.addListener(() {
+          if (foodController.text != controller.text) {
+            foodController.text = controller.text;
+          }
+        });
+
+        return TextField(
+          controller: controller,
+          focusNode: focusNode,
+          decoration: const InputDecoration(
+            labelText: 'Angiv fødevare',
+            isDense: true,
+          ),
+        );
+      },
     );
   }
 
   Widget mealAutocompleteField() {
     return Autocomplete<String>(
+      optionsViewOpenDirection: OptionsViewOpenDirection.up,
       optionsBuilder: (value) async {
         if (value.text.trim().isEmpty) {
           return const Iterable<String>.empty();
