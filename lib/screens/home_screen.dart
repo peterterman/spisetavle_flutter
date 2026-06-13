@@ -16,6 +16,7 @@ import 'barcode_scan_screen.dart';
 import 'local_food_edit_screen.dart';
 import '../services/barcode_service.dart';
 import 'calorie_calculator_screen.dart';
+import 'meal_photo_screen.dart';
 
 int streak = 0;
 
@@ -490,16 +491,31 @@ DTU Fødevareinstituttet
                   context,
                   MaterialPageRoute(builder: (_) => const MealsScreen()),
                 );
-
                 setState(() {});
+              }
+              if (value == 'analyser_maaltid') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MealPhotoScreen(
+                      user: selectedBrugerNr,
+                      date: dateText(2),
+                      userName: currentUser?.name ?? '',
+                    ),
+                  ),
+                );
               }
             },
             itemBuilder: (context) => [
-              if (Platform.isIOS)
-                const PopupMenuItem(
-                  value: 'scanfood',
-                  child: Text('Scan fødevare'),
+              if (true)
+                PopupMenuItem(
+                  value: 'analyser_maaltid',
+                  child: Text('Analyser måltid'),
                 ),
+              const PopupMenuItem(
+                value: 'scanfood',
+                child: Text('Scan fødevare'),
+              ),
               PopupMenuItem(value: 'localfoods', child: Text('Egne fødevarer')),
               PopupMenuItem(value: 'meals', child: Text('Måltider')),
               PopupMenuItem(value: 'users', child: Text('Brugeropsætning')),

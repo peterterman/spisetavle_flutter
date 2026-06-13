@@ -1,0 +1,619 @@
+Initialized native services in: /home/peter-terman-hansen/.gradle/native
+Initialized jansi services in: /home/peter-terman-hansen/.gradle/native
+The client will now receive all logging from the daemon (pid: 7197). The daemon log file: /home/peter-terman-hansen/.gradle/daemon/9.1.0/daemon-7197.out.log
+Starting 5th build in daemon [uptime: 19 mins 17.25 secs, performance: 97%, GC rate: 0.00/s, heap usage: 0% of 8 GiB, non-heap usage: 6% of 4 GiB]
+Using 4 worker leases.
+Now considering [/home/peter-terman-hansen/spisetavle_flutter/android, /home/peter-terman-hansen/flutter/packages/flutter_tools/gradle] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Now considering [/home/peter-terman-hansen/flutter/packages/flutter_tools/gradle, /home/peter-terman-hansen/spisetavle_flutter/android] as hierarchies to watch
+
+> Configure project :gradle
+Evaluating project ':gradle' using build file '/home/peter-terman-hansen/flutter/packages/flutter_tools/gradle/build.gradle.kts'.
+Resolved plugin [id: 'org.gradle.java-gradle-plugin']
+Resolved plugin [id: 'org.gradle.groovy']
+Resolved plugin [id: 'org.gradle.kotlin.kotlin-dsl', version: '6.2.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.2.20']
+Build 767753fc-45f3-4ced-b019-e5d0fce9c82e is started
+Using Kotlin Gradle Plugin gradle813 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+WARNING: Unsupported Kotlin plugin version.
+The `embedded-kotlin` and `kotlin-dsl` plugins rely on features of Kotlin `2.2.0` that might work differently than in the requested version `2.2.20`.
+file or directory '/home/peter-terman-hansen/flutter/packages/flutter_tools/gradle/src/main/java', not found
+Resolved plugin [id: 'dev.flutter.flutter-plugin-loader', version: '1.0.0']
+Resolved plugin [id: 'com.android.application', version: '9.0.1', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.3.20', apply: false]
+Resolve mutations for :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:gradle:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+
+> Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :gradle:compileKotlin (Thread[Execution worker,5,main]) started.
+:gradle:compileKotlin (Thread[Execution worker,5,main]) started.
+
+> Task :gradle:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle:compileKotlin' as it is up-to-date.
+Resolve mutations for :gradle:compileJava (Thread[Execution worker Thread 3,5,main]) started.
+:gradle:compileJava (Thread[Execution worker,5,main]) started.
+
+> Task :gradle:compileJava NO-SOURCE
+Skipping task ':gradle:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :gradle:compileGroovy (Thread[Execution worker Thread 3,5,main]) started.
+:gradle:compileGroovy (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :gradle:compileGroovy NO-SOURCE
+Skipping task ':gradle:compileGroovy' as it has no source files and no previous output files.
+Resolve mutations for :gradle:pluginDescriptors (Thread[Execution worker Thread 3,5,main]) started.
+:gradle:pluginDescriptors (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :gradle:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':gradle:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :gradle:processResources (Thread[Execution worker,5,main]) started.
+:gradle:processResources (Thread[Execution worker,5,main]) started.
+
+> Task :gradle:processResources UP-TO-DATE
+Caching disabled for task ':gradle:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle:processResources' as it is up-to-date.
+Resolve mutations for :gradle:classes (Thread[Execution worker,5,main]) started.
+:gradle:classes (Thread[Execution worker,5,main]) started.
+
+> Task :gradle:classes UP-TO-DATE
+Skipping task ':gradle:classes' as it has no actions.
+Resolve mutations for :gradle:jar (Thread[Execution worker Thread 3,5,main]) started.
+:gradle:jar (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :gradle:jar UP-TO-DATE
+Caching disabled for task ':gradle:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle:jar' as it is up-to-date.
+Settings evaluated using settings file '/home/peter-terman-hansen/spisetavle_flutter/android/settings.gradle.kts'.
+Projects loaded. Root project using build file '/home/peter-terman-hansen/spisetavle_flutter/android/build.gradle.kts'.
+Included projects: [root project 'android', project ':app', project ':mobile_scanner', project ':sqflite_android']
+
+> Configure project :app
+Evaluating project ':app' using build file '/home/peter-terman-hansen/spisetavle_flutter/android/app/build.gradle.kts'.
+Resolved plugin [id: 'com.android.application']
+Resolved plugin [id: 'dev.flutter.flutter-gradle-plugin']
+WARNING: The option setting 'android.builtInKotlin=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+Using default execution profile
+Build b6ff0f36-a7c8-42a7-951a-634b4fbd4afc is started
+Using Kotlin Gradle Plugin gradle813 variant
+Using Kotlin Gradle Plugin gradle813 variant
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /home/peter-terman-hansen/Android/Sdk
+w: [33m[1m⚠️ Deprecated 'org.jetbrains.kotlin.android' plugin usage[0m[0m
+The 'org.jetbrains.kotlin.android' plugin in project ':app' is no longer required for Kotlin support since AGP 9.0.
+[32m[1mSolution:[0m[0m
+[32m[3mRemove both `android.builtInKotlin=true` and `android.newDsl=false` from `gradle.properties`, then migrate to built-in Kotlin.[0m[0m
+[36mSee [0m[34mhttps://kotl.in/gradle/agp-built-in-kotlin[0m[36m for more details.[0m
+
+
+> Configure project :
+Evaluating root project 'android' using build file '/home/peter-terman-hansen/spisetavle_flutter/android/build.gradle.kts'.
+
+> Configure project :mobile_scanner
+Evaluating project ':mobile_scanner' using build file '/home/peter-terman-hansen/.pub-cache/hosted/pub.dev/mobile_scanner-7.2.0/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+w: [33m[1m⚠️ Deprecated 'org.jetbrains.kotlin.android' plugin usage[0m[0m
+The 'org.jetbrains.kotlin.android' plugin in project ':mobile_scanner' is no longer required for Kotlin support since AGP 9.0.
+[32m[1mSolution:[0m[0m
+[32m[3mRemove both `android.builtInKotlin=true` and `android.newDsl=false` from `gradle.properties`, then migrate to built-in Kotlin.[0m[0m
+[36mSee [0m[34mhttps://kotl.in/gradle/agp-built-in-kotlin[0m[36m for more details.[0m
+
+
+> Configure project :sqflite_android
+Evaluating project ':sqflite_android' using build file '/home/peter-terman-hansen/.pub-cache/hosted/pub.dev/sqflite_android-2.4.3/android/build.gradle'.
+Using default execution profile
+w: [33m[1m⚠️ Deprecated 'org.jetbrains.kotlin.android' plugin usage[0m[0m
+The 'org.jetbrains.kotlin.android' plugin in project ':sqflite_android' is no longer required for Kotlin support since AGP 9.0.
+[32m[1mSolution:[0m[0m
+[32m[3mRemove both `android.builtInKotlin=true` and `android.newDsl=false` from `gradle.properties`, then migrate to built-in Kotlin.[0m[0m
+[36mSee [0m[34mhttps://kotl.in/gradle/agp-built-in-kotlin[0m[36m for more details.[0m
+
+All projects evaluated.
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): mobile_scanner
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing 
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Task path ':app:compileDebugKotlin' matched project ':app'
+Task name matched 'compileDebugKotlin'
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugKotlin
+Selected primary task 'compileDebugKotlin' from project :app
+Tasks to be executed: [task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:cleanMergeDebugAssets', task ':app:compileFlutterBuildDebug', task ':app:generateDebugAssets', task ':app:preBuild', task ':app:preDebugBuild', task ':mobile_scanner:generateDebugAssets', task ':mobile_scanner:preBuild', task ':mobile_scanner:preDebugBuild', task ':mobile_scanner:mergeDebugAssets', task ':sqflite_android:generateDebugAssets', task ':sqflite_android:preBuild', task ':sqflite_android:preDebugBuild', task ':sqflite_android:mergeDebugAssets', task ':app:mergeDebugAssets', task ':app:copyFlutterAssetsDebug', task ':app:generateDebugResources', task ':app:packageDebugResources', task ':mobile_scanner:processDebugNavigationResources', task ':sqflite_android:processDebugNavigationResources', task ':app:processDebugNavigationResources', task ':app:parseDebugLocalResources', task ':app:generateDebugRFile', task ':mobile_scanner:checkKotlinGradlePluginConfigurationErrors', task ':mobile_scanner:generateDebugResources', task ':mobile_scanner:packageDebugResources', task ':mobile_scanner:parseDebugLocalResources', task ':mobile_scanner:generateDebugRFile', task ':mobile_scanner:compileDebugKotlin', task ':mobile_scanner:javaPreCompileDebug', task ':mobile_scanner:compileDebugJavaWithJavac', task ':mobile_scanner:bundleLibCompileToJarDebug', task ':sqflite_android:checkKotlinGradlePluginConfigurationErrors', task ':sqflite_android:generateDebugResources', task ':sqflite_android:packageDebugResources', task ':sqflite_android:parseDebugLocalResources', task ':sqflite_android:generateDebugRFile', task ':sqflite_android:compileDebugKotlin', task ':sqflite_android:javaPreCompileDebug', task ':sqflite_android:compileDebugJavaWithJavac', task ':sqflite_android:bundleLibCompileToJarDebug', task ':app:compileDebugKotlin']
+Tasks that were excluded: []
+Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+:app:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :app:cleanMergeDebugAssets (Thread[Execution worker Thread 3,5,main]) started.
+:app:cleanMergeDebugAssets (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:cleanMergeDebugAssets
+Caching disabled for task ':app:cleanMergeDebugAssets' because:
+  Build cache is disabled
+Task ':app:cleanMergeDebugAssets' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :app:compileFlutterBuildDebug (Thread[included builds,5,main]) started.
+:app:compileFlutterBuildDebug (Thread[included builds,5,main]) started.
+
+> Task :app:compileFlutterBuildDebug
+Caching disabled for task ':app:compileFlutterBuildDebug' because:
+  Build cache is disabled
+  Caching has not been enabled for the task
+Task ':app:compileFlutterBuildDebug' is not up-to-date because:
+  Value of input property 'dartDefines' has changed for task ':app:compileFlutterBuildDebug'
+  Value of input property 'fileSystemScheme' has changed for task ':app:compileFlutterBuildDebug'
+  Value of input property 'targetPath' has changed for task ':app:compileFlutterBuildDebug'
+  and more...
+Starting process 'command '/home/peter-terman-hansen/flutter/bin/flutter''. Working directory: /home/peter-terman-hansen/spisetavle_flutter Command: /home/peter-terman-hansen/flutter/bin/flutter --quiet assemble --no-version-check --depfile /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/flutter/debug/flutter_build.d --output /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/flutter/debug -dTargetFile=lib/main.dart -dTargetPlatform=android -dBuildMode=debug -dTrackWidgetCreation=true -dFlavor= -dAndroidArchs=android-arm android-arm64 android-x64 -dMinSdkVersion=24 debug_android_application
+Successfully started process 'command '/home/peter-terman-hansen/flutter/bin/flutter''
+Resolve mutations for :app:generateDebugAssets (Thread[included builds,5,main]) started.
+:app:generateDebugAssets (Thread[included builds,5,main]) started.
+
+> Task :app:generateDebugAssets UP-TO-DATE
+Skipping task ':app:generateDebugAssets' as it has no actions.
+Resolve mutations for :app:preBuild (Thread[included builds,5,main]) started.
+:app:preBuild (Thread[included builds,5,main]) started.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[included builds,5,main]) started.
+:app:preDebugBuild (Thread[included builds,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :mobile_scanner:generateDebugAssets (Thread[included builds,5,main]) started.
+:mobile_scanner:generateDebugAssets (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:generateDebugAssets UP-TO-DATE
+Skipping task ':mobile_scanner:generateDebugAssets' as it has no actions.
+Resolve mutations for :mobile_scanner:preBuild (Thread[included builds,5,main]) started.
+:mobile_scanner:preBuild (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:preBuild UP-TO-DATE
+Skipping task ':mobile_scanner:preBuild' as it has no actions.
+Resolve mutations for :mobile_scanner:preDebugBuild (Thread[included builds,5,main]) started.
+:mobile_scanner:preDebugBuild (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:preDebugBuild UP-TO-DATE
+Skipping task ':mobile_scanner:preDebugBuild' as it has no actions.
+Resolve mutations for :mobile_scanner:mergeDebugAssets (Thread[included builds,5,main]) started.
+:mobile_scanner:mergeDebugAssets (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:mergeDebugAssets UP-TO-DATE
+Caching disabled for task ':mobile_scanner:mergeDebugAssets' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':mobile_scanner:mergeDebugAssets' as it is up-to-date.
+work action resolve mergeDebugAssets (project :mobile_scanner) (Thread[included builds,5,main]) started.
+Resolve mutations for :sqflite_android:generateDebugAssets (Thread[included builds,5,main]) started.
+:sqflite_android:generateDebugAssets (Thread[included builds,5,main]) started.
+
+> Task :sqflite_android:generateDebugAssets UP-TO-DATE
+Skipping task ':sqflite_android:generateDebugAssets' as it has no actions.
+Resolve mutations for :sqflite_android:preBuild (Thread[included builds,5,main]) started.
+:sqflite_android:preBuild (Thread[included builds,5,main]) started.
+
+> Task :sqflite_android:preBuild UP-TO-DATE
+Skipping task ':sqflite_android:preBuild' as it has no actions.
+Resolve mutations for :sqflite_android:preDebugBuild (Thread[included builds,5,main]) started.
+:sqflite_android:preDebugBuild (Thread[included builds,5,main]) started.
+
+> Task :sqflite_android:preDebugBuild UP-TO-DATE
+Skipping task ':sqflite_android:preDebugBuild' as it has no actions.
+Resolve mutations for :sqflite_android:mergeDebugAssets (Thread[included builds,5,main]) started.
+:sqflite_android:mergeDebugAssets (Thread[included builds,5,main]) started.
+
+> Task :sqflite_android:mergeDebugAssets UP-TO-DATE
+Caching disabled for task ':sqflite_android:mergeDebugAssets' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':sqflite_android:mergeDebugAssets' as it is up-to-date.
+work action resolve mergeDebugAssets (project :sqflite_android) (Thread[included builds,5,main]) started.
+Resolve mutations for :app:mergeDebugAssets (Thread[included builds,5,main]) started.
+:app:mergeDebugAssets (Thread[included builds,5,main]) started.
+
+> Task :app:mergeDebugAssets
+Caching disabled for task ':app:mergeDebugAssets' because:
+  Build cache is disabled
+  Simple merging task
+Task ':app:mergeDebugAssets' is not up-to-date because:
+  Output property 'outputDir' file /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/assets/debug/mergeDebugAssets has been removed.
+  Output property 'outputDir' file /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/assets/debug/mergeDebugAssets/mlkit_barcode_models has been removed.
+  Output property 'outputDir' file /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/assets/debug/mergeDebugAssets/mlkit_barcode_models/barcode_ssd_mobilenet_v1_dmp25_quant.tflite has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':app:mergeDebugAssets'.
+Resolve mutations for :app:copyFlutterAssetsDebug (Thread[included builds,5,main]) started.
+:app:copyFlutterAssetsDebug (Thread[included builds,5,main]) started.
+
+> Task :app:copyFlutterAssetsDebug
+Caching disabled for task ':app:copyFlutterAssetsDebug' because:
+  Build cache is disabled
+  Not worth caching
+Task ':app:copyFlutterAssetsDebug' is not up-to-date because:
+  Output property 'destinationDir' file /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/assets/debug/mergeDebugAssets/flutter_assets has been removed.
+  Output property 'destinationDir' file /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/assets/debug/mergeDebugAssets/flutter_assets/AssetManifest.bin has been removed.
+  Output property 'destinationDir' file /home/peter-terman-hansen/spisetavle_flutter/build/app/intermediates/assets/debug/mergeDebugAssets/flutter_assets/FontManifest.json has been removed.
+  and more...
+Resolve mutations for :app:generateDebugResources (Thread[included builds,5,main]) started.
+:app:generateDebugResources (Thread[included builds,5,main]) started.
+
+> Task :app:generateDebugResources UP-TO-DATE
+Caching disabled for task ':app:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugResources' as it is up-to-date.
+Resolve mutations for :app:packageDebugResources (Thread[included builds,5,main]) started.
+:app:packageDebugResources (Thread[included builds,5,main]) started.
+
+> Task :app:packageDebugResources UP-TO-DATE
+Caching disabled for task ':app:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:packageDebugResources' as it is up-to-date.
+Resolve mutations for :mobile_scanner:processDebugNavigationResources (Thread[included builds,5,main]) started.
+:mobile_scanner:processDebugNavigationResources (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:processDebugNavigationResources UP-TO-DATE
+Caching disabled for task ':mobile_scanner:processDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:processDebugNavigationResources' as it is up-to-date.
+work action resolve debug (project :mobile_scanner) (Thread[included builds,5,main]) started.
+Resolve mutations for :sqflite_android:processDebugNavigationResources (Thread[included builds,5,main]) started.
+:sqflite_android:processDebugNavigationResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:processDebugNavigationResources UP-TO-DATE
+Caching disabled for task ':sqflite_android:processDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:processDebugNavigationResources' as it is up-to-date.
+work action resolve debug (project :sqflite_android) (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:processDebugNavigationResources (Thread[Execution worker Thread 3,5,main]) started.
+:app:processDebugNavigationResources (Thread[included builds,5,main]) started.
+
+> Task :app:processDebugNavigationResources UP-TO-DATE
+Caching disabled for task ':app:processDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:processDebugNavigationResources' as it is up-to-date.
+Resolve mutations for :app:parseDebugLocalResources (Thread[included builds,5,main]) started.
+:app:parseDebugLocalResources (Thread[included builds,5,main]) started.
+
+> Task :app:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':app:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':app:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :app:generateDebugRFile (Thread[Execution worker Thread 3,5,main]) started.
+:app:generateDebugRFile (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':app:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :mobile_scanner:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 3,5,main]) started.
+:mobile_scanner:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':mobile_scanner:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :mobile_scanner:generateDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+:mobile_scanner:generateDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:generateDebugResources UP-TO-DATE
+Caching disabled for task ':mobile_scanner:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:generateDebugResources' as it is up-to-date.
+Resolve mutations for :mobile_scanner:packageDebugResources (Thread[included builds,5,main]) started.
+:mobile_scanner:packageDebugResources (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:packageDebugResources UP-TO-DATE
+Caching disabled for task ':mobile_scanner:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:packageDebugResources' as it is up-to-date.
+Resolve mutations for :mobile_scanner:parseDebugLocalResources (Thread[included builds,5,main]) started.
+:mobile_scanner:parseDebugLocalResources (Thread[included builds,5,main]) started.
+
+> Task :mobile_scanner:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':mobile_scanner:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :mobile_scanner:generateDebugRFile (Thread[Execution worker Thread 3,5,main]) started.
+:mobile_scanner:generateDebugRFile (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':mobile_scanner:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :mobile_scanner:compileDebugKotlin (Thread[included builds,5,main]) started.
+:mobile_scanner:compileDebugKotlin (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:compileDebugKotlin UP-TO-DATE
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :mobile_scanner:compileDebugAndroidTestKotlin
+GradleBuildProject.Builder should not be accessed through AnalyticsConfiguratorService after AnalyticsService is created. Analytics information of this build might be incomplete.
+Caching disabled for task ':mobile_scanner:compileDebugKotlin' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:compileDebugKotlin' as it is up-to-date.
+Resolve mutations for :mobile_scanner:javaPreCompileDebug (Thread[Execution worker Thread 3,5,main]) started.
+:mobile_scanner:javaPreCompileDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:javaPreCompileDebug UP-TO-DATE
+Caching disabled for task ':mobile_scanner:javaPreCompileDebug' because:
+  Build cache is disabled
+Skipping task ':mobile_scanner:javaPreCompileDebug' as it is up-to-date.
+Resolve mutations for :mobile_scanner:compileDebugJavaWithJavac (Thread[Execution worker Thread 3,5,main]) started.
+:mobile_scanner:compileDebugJavaWithJavac (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:compileDebugJavaWithJavac NO-SOURCE
+Skipping task ':mobile_scanner:compileDebugJavaWithJavac' as it has no source files and no previous output files.
+Resolve mutations for :mobile_scanner:bundleLibCompileToJarDebug (Thread[Execution worker Thread 3,5,main]) started.
+:mobile_scanner:bundleLibCompileToJarDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :mobile_scanner:bundleLibCompileToJarDebug UP-TO-DATE
+Caching disabled for task ':mobile_scanner:bundleLibCompileToJarDebug' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':mobile_scanner:bundleLibCompileToJarDebug' as it is up-to-date.
+work action resolve classes.jar (project :mobile_scanner) (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :sqflite_android:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':sqflite_android:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :sqflite_android:generateDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:generateDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:generateDebugResources UP-TO-DATE
+Caching disabled for task ':sqflite_android:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:generateDebugResources' as it is up-to-date.
+Resolve mutations for :sqflite_android:packageDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:packageDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:packageDebugResources UP-TO-DATE
+Caching disabled for task ':sqflite_android:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:packageDebugResources' as it is up-to-date.
+Resolve mutations for :sqflite_android:parseDebugLocalResources (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:parseDebugLocalResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':sqflite_android:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :sqflite_android:generateDebugRFile (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:generateDebugRFile (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':sqflite_android:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :sqflite_android:compileDebugKotlin (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:compileDebugKotlin (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:compileDebugKotlin NO-SOURCE
+Skipping task ':sqflite_android:compileDebugKotlin' as it has no source files and no previous output files.
+Resolve mutations for :sqflite_android:javaPreCompileDebug (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:javaPreCompileDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:javaPreCompileDebug UP-TO-DATE
+Caching disabled for task ':sqflite_android:javaPreCompileDebug' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:javaPreCompileDebug' as it is up-to-date.
+Resolve mutations for :sqflite_android:compileDebugJavaWithJavac (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:compileDebugJavaWithJavac (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:compileDebugJavaWithJavac UP-TO-DATE
+Custom actions are attached to task ':sqflite_android:compileDebugJavaWithJavac'.
+Caching disabled for task ':sqflite_android:compileDebugJavaWithJavac' because:
+  Build cache is disabled
+Skipping task ':sqflite_android:compileDebugJavaWithJavac' as it is up-to-date.
+No compile result for :sqflite_android:compileDebugJavaWithJavac
+No compile result for :sqflite_android:compileDebugJavaWithJavac
+No compile result for :sqflite_android:compileDebugJavaWithJavac
+No compile result for :sqflite_android:compileDebugJavaWithJavac
+Resolve mutations for :sqflite_android:bundleLibCompileToJarDebug (Thread[Execution worker Thread 3,5,main]) started.
+:sqflite_android:bundleLibCompileToJarDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :sqflite_android:bundleLibCompileToJarDebug UP-TO-DATE
+Caching disabled for task ':sqflite_android:bundleLibCompileToJarDebug' because:
+  Build cache is disabled
+  Simple merging task
+Skipping task ':sqflite_android:bundleLibCompileToJarDebug' as it is up-to-date.
+work action resolve classes.jar (project :sqflite_android) (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:compileDebugKotlin (Thread[Execution worker Thread 3,5,main]) started.
+:app:compileDebugKotlin (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:compileDebugKotlin
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugAndroidTestKotlin
+GradleBuildProject.Builder should not be accessed through AnalyticsConfiguratorService after AnalyticsService is created. Analytics information of this build might be incomplete.
+Caching disabled for task ':app:compileDebugKotlin' because:
+  Build cache is disabled
+Task ':app:compileDebugKotlin' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':app:compileDebugKotlin'.
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/java', not found
+file or directory '/home/peter-terman-hansen/spisetavle_flutter/android/app/src/debug/kotlin', not found
+Kotlin source files: /home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/kotlin/com/example/spisetavle_flutter/scanner/ViewfinderOverlay.kt, /home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/kotlin/com/example/spisetavle_flutter/scanner/BarcodeScannerActivity.kt, /home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/kotlin/com/example/spisetavle_flutter/MainActivity.kt
+Java source files: /home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: null
+i: Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[], generateCompilerRefIndex=false), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@4a50e574, classpathChanges=NotAvailableDueToMissingClasspathSnapshot, workingDir=/home/peter-terman-hansen/spisetavle_flutter/build/app/kotlin/compileDebugKotlin/cacheable, multiModuleICSettings=null, icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=true, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/home/peter-terman-hansen/spisetavle_flutter/build/app/tmp/kotlin-classes/debug, /home/peter-terman-hansen/spisetavle_flutter/build/app/kotlin/compileDebugKotlin/cacheable, /home/peter-terman-hansen/spisetavle_flutter/build/app/kotlin/compileDebugKotlin/local-state])
+e: file:///home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/kotlin/com/example/spisetavle_flutter/scanner/BarcodeScannerActivity.kt:14:20 Unresolved reference 'spisetavle'.
+e: file:///home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/kotlin/com/example/spisetavle_flutter/scanner/BarcodeScannerActivity.kt:32:26 Unresolved reference 'layout'.
+e: file:///home/peter-terman-hansen/spisetavle_flutter/android/app/src/main/kotlin/com/example/spisetavle_flutter/scanner/BarcodeScannerActivity.kt:34:38 Unresolved reference 'id'.
+i: Finished executing kotlin compiler using DAEMON strategy
+
+> Task :app:compileDebugKotlin FAILED
+Build 767753fc-45f3-4ced-b019-e5d0fce9c82e is closed
+Build b6ff0f36-a7c8-42a7-951a-634b4fbd4afc is closed
+
+[Incubating] Problems report is available at: file:///home/peter-terman-hansen/spisetavle_flutter/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.btapi.BuildToolsApiCompilationWork
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to generate a Build Scan (Powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.1.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 10s
+32 actionable tasks: 5 executed, 27 up-to-date

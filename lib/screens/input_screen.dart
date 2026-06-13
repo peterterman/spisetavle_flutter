@@ -9,12 +9,16 @@ class InputScreen extends StatefulWidget {
   final String user;
   final String date;
   final String userName;
+  final String initialTid;
+  final List<Map<String, dynamic>> initialFoods;
 
   const InputScreen({
     super.key,
     required this.user,
     required this.date,
     required this.userName,
+    this.initialTid = 'm',
+    this.initialFoods = const [],
   });
 
   @override
@@ -34,6 +38,20 @@ class _InputScreenState extends State<InputScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+
+    final index = switch (widget.initialTid) {
+      'm' => 0,
+      'f' => 1,
+      'a' => 2,
+      's' => 3,
+      _ => 0,
+    };
+
+    _tabController.index = index;
+    if (widget.initialFoods.isNotEmpty) {
+      foodController.text = widget.initialFoods.first['name'].toString();
+      amountController.text = widget.initialFoods.first['grams'].toString();
+    }
   }
 
   @override
