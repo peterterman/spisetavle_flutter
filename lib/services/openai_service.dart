@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class OpenAiService {
-static const String _apiKey = String.fromEnvironment('OPENAI_API_KEY');
+  static const String _apiKey = String.fromEnvironment('OPENAI_API_KEY');
   static Future<List<Map<String, dynamic>>> analyzeMealPhoto(
     File imageFile,
   ) async {

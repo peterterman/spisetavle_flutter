@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import '../models/food_item.dart';
 import '../database/database_service.dart';
 import '../services/openai_service.dart';
 import 'input_screen.dart';
@@ -37,6 +37,107 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _takePhoto();
     });
+  }
+
+  Future<FoodItem?> _chooseFridaFood(String aiName) async {
+    final controller = TextEditingController(text: aiName);
+    List<FoodItem> matches = await DatabaseService.instance
+        .searchFridaFoodItems(aiName);
+
+    if (!mounted) return null;
+
+    return showDialog<FoodItem>(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            Future<void> searchNow() async {
+              final query = controller.text.trim();
+              if (query.isEmpty) return;
+
+              final localFood = await DatabaseService.instance
+                  .getLocalFoodExact(query);
+
+              List<FoodItem> found = [];
+
+              if (localFood != null) {
+                found = [localFood];
+              } else {
+                found = await DatabaseService.instance.searchFridaFoodItems(
+                  query,
+                );
+              }
+
+              if (!context.mounted) return;
+
+              setDialogState(() {
+                matches = found;
+              });
+            }
+
+            return AlertDialog(
+              title: Text('Vælg Frida-post for "$aiName"'),
+              content: SizedBox(
+                width: double.maxFinite,
+                height: 420,
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: controller,
+                      autofocus: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Søg i Frida',
+                        hintText: 'fx æg, tomat, persille',
+                      ),
+                      onSubmitted: (_) => searchNow(),
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: searchNow,
+                        child: const Text('Søg'),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Expanded(
+                      child: matches.isEmpty
+                          ? const Center(child: Text('Ingen match endnu'))
+                          : ListView.separated(
+                              itemCount: matches.length,
+                              separatorBuilder: (_, __) =>
+                                  const Divider(height: 1),
+                              itemBuilder: (context, index) {
+                                final food = matches[index];
+
+                                return ListTile(
+                                  dense: true,
+                                  title: Text(food.navn),
+                                  subtitle: Text(
+                                    'Kcal ${food.kcal.toStringAsFixed(0)}  '
+                                    'Kulh ${food.khyd.toStringAsFixed(1)}  '
+                                    'Prot ${food.prot.toStringAsFixed(1)}  '
+                                    'Fedt ${food.fedt.toStringAsFixed(1)}',
+                                  ),
+                                  onTap: () => Navigator.pop(context, food),
+                                );
+                              },
+                            ),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Spring over'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   Future<void> _takePhoto() async {
@@ -100,23 +201,43 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
   Future<void> _saveFoods() async {
     if (_foods.isEmpty) return;
 
-    for (final food in _foods) {
-      try {
-        await DatabaseService.instance.insertCalculatedLogEntry(
-          date: widget.date,
-          foodName: food['name'].toString(),
-          amount: (food['grams'] as num).toDouble(),
-          user: widget.user,
-          tid: _tid,
+    for (final item in _foods) {
+      final aiName = item['name'].toString().trim();
+      final amount = (item['grams'] as num).toDouble();
+
+      if (aiName.isEmpty || amount <= 0) continue;
+
+      var food = await DatabaseService.instance.getLocalFoodExact(aiName);
+      food ??= await DatabaseService.instance.getFoodValues(aiName);
+
+      if (food == null) {
+        food = await _chooseFridaFood(aiName);
+
+        if (!mounted) return;
+
+        if (food == null) {
+          continue;
+        }
+
+        await DatabaseService.instance.saveFoodToLocalAlias(
+          alias: aiName,
+          food: food,
         );
-      } catch (_) {
-        // Ignorer fødevarer som ikke findes i Frida
       }
+
+      await DatabaseService.instance.insertFoodItemLogEntry(
+        date: widget.date,
+        food: food,
+        displayName: aiName,
+        amount: amount,
+        user: widget.user,
+        tid: _tid,
+      );
     }
 
     if (!mounted) return;
 
-    Navigator.pushReplacement(
+    final result = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => InputScreen(
@@ -127,6 +248,10 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
         ),
       ),
     );
+
+    if (!mounted) return;
+
+    Navigator.pop(context, result == true);
   }
 
   @override
