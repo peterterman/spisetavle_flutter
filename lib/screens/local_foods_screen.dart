@@ -13,6 +13,8 @@ class LocalFoodsScreen extends StatefulWidget {
 }
 
 class _LocalFoodsScreenState extends State<LocalFoodsScreen> {
+  String _searchText = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +24,33 @@ class _LocalFoodsScreenState extends State<LocalFoodsScreen> {
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: TextField(
+              decoration: const InputDecoration(
+                labelText: 'Søg fødevare',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  _searchText = value;
+                });
+              },
+            ),
+          ),
+
           Expanded(
             child: FutureBuilder<List<FoodItem>>(
               future: DatabaseService.instance.getAllLocalFoods(),
               builder: (context, snapshot) {
-                final foods = snapshot.data ?? [];
+                final allFoods = snapshot.data ?? [];
+
+                final foods = allFoods.where((food) {
+                  return food.navn.toLowerCase().contains(
+                    _searchText.toLowerCase(),
+                  );
+                }).toList();
 
                 return ListView.builder(
                   itemCount: foods.length,
@@ -50,6 +74,7 @@ class _LocalFoodsScreenState extends State<LocalFoodsScreen> {
               },
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(12),
             child: Row(

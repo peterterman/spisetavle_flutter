@@ -30,7 +30,16 @@ class DatabaseService {
       await _copyDatabaseFromAssets(path);
     }
 
-    return await openDatabase(path, version: 1);
+    final db = await openDatabase(path, version: 1);
+
+    await db.execute('''
+CREATE TABLE IF NOT EXISTS ai_food_alias(
+  ai_name TEXT PRIMARY KEY,
+  frida_name TEXT NOT NULL
+)
+''');
+
+    return db;
   }
 
   Future<void> _copyDatabaseFromAssets(String targetPath) async {
@@ -738,6 +747,17 @@ AND date = ?
   // Hjælpefunktioner
   // ---------------------------------------------------------------------------
 
+  Future<void> ensureAiAliasTable() async {
+    final db = await database;
+
+    await db.execute('''
+CREATE TABLE IF NOT EXISTS ai_food_alias(
+  ai_name TEXT PRIMARY KEY,
+  frida_name TEXT NOT NULL
+)
+''');
+  }
+
   double _toDouble(Object? value) {
     if (value == null) return 0;
     return double.tryParse(value.toString().replaceAll(',', '.')) ?? 0;
@@ -812,5 +832,103 @@ AND date = ?
     final year = date.year.toString();
 
     return '$day $month $year';
+  }
+
+  // ---------------------------------------------------------------------------
+  // AI Match
+  // ---------------------------------------------------------------------------
+
+  Future<void> saveAiAlias(String aiName, String fridaName) async {
+    final db = await instance.database;
+
+    await db.insert('ai_food_alias', {
+      'ai_name': aiName.toLowerCase().trim(),
+      'frida_name': fridaName,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  Future<String?> getAiAlias(String aiName) async {
+    final db = await instance.database;
+
+    final result = await db.query(
+      'ai_food_alias',
+      where: 'ai_name = ?',
+      whereArgs: [aiName.toLowerCase().trim()],
+      limit: 1,
+    );
+
+    if (result.isEmpty) return null;
+
+    return result.first['frida_name']?.toString();
+  }
+
+  Future<String?> findBestAiAlias(String aiText) async {
+    // 1. Prøv hele teksten først
+    final exact = await getAiAlias(aiText);
+    if (exact != null) return exact;
+
+    // 2. Prøv enkeltord
+    final words = aiText
+        .toLowerCase()
+        .replaceAll(',', ' ')
+        .replaceAll('.', ' ')
+        .split(' ')
+        .where((e) => e.trim().isNotEmpty)
+        .toList();
+
+    for (final word in words) {
+      final alias = await getAiAlias(word);
+
+      if (alias != null) {
+        return alias;
+      }
+    }
+
+    return null;
+  }
+
+  Future<List<String>> findAiMatches(String aiFood) async {
+    final db = await instance.database;
+    final text = aiFood.toLowerCase().trim();
+
+    if (text.isEmpty) return [];
+
+    final startsWith = await db.rawQuery(
+      '''
+SELECT name
+FROM frida
+WHERE LOWER(name) LIKE ?
+ORDER BY name COLLATE NOCASE
+LIMIT 15
+''',
+      ['$text%'],
+    );
+
+    final contains = await db.rawQuery(
+      '''
+SELECT name
+FROM frida
+WHERE LOWER(name) LIKE ?
+AND LOWER(name) NOT LIKE ?
+ORDER BY name COLLATE NOCASE
+LIMIT 15
+''',
+      ['%$text%', '$text%'],
+    );
+
+    final names = <String>[];
+
+    for (final row in startsWith) {
+      names.add(row['name'].toString());
+    }
+
+    for (final row in contains) {
+      final name = row['name'].toString();
+      if (!names.contains(name)) {
+        names.add(name);
+      }
+    }
+
+    return names;
   }
 }

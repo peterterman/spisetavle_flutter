@@ -17,6 +17,8 @@ import 'local_food_edit_screen.dart';
 import '../services/barcode_service.dart';
 import 'calorie_calculator_screen.dart';
 import 'meal_photo_screen.dart';
+import 'ai_match_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 int streak = 0;
 
@@ -42,6 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
     loadUser();
   }
 
+  Future<void> _openUrl(String url) async {
+    final uri = Uri.parse(url);
+
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Kunne ikke åbne $url');
+    }
+  }
+
   @override
   void dispose() {
     _pageController.dispose();
@@ -53,29 +63,77 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text(
-          'Om SpiseTavle',
+          'Datakilder og information',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        content: const SingleChildScrollView(
-          child: Text('''Version: 3.0 - Flutter
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Version 3.0 - Flutter\n\n'
+                'Udviklet af Peter Terman Hansen',
+              ),
 
-Udviklet af Peter Terman
+              const SizedBox(height: 16),
 
-Fødevaredata
-(frida.fooddata.dk)
+              const Text(
+                'Datakilder',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
 
-Version 5.4 (2025)
+              TextButton(
+                onPressed: () => _openUrl('https://frida.fooddata.dk'),
+                child: const Text('FRIDA Fødevaredatabasen'),
+              ),
 
-Fødevareinstituttet
-Danmarks Tekniske Universitet
+              const Text(
+                'Version 5.4 (2025)\n'
+                'DTU Fødevareinstituttet\n'
+                'Danmarks Tekniske Universitet',
+              ),
 
-Data for fødevarers næringsindhold er stillet til rådighed af
-DTU Fødevareinstituttet
-(frida.fooddata.dk)'''),
+              const SizedBox(height: 16),
+
+              const Text(
+                'Beregninger',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+
+              const Text(
+                'Kalorier, protein, fedt og kulhydrater beregnes på baggrund af de registrerede fødevarer og værdierne i FRIDA-databasen.',
+              ),
+
+              const SizedBox(height: 16),
+
+              const Text(
+                'Ansvarsfraskrivelse',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+
+              const Text(
+                'SpiseTavle er et informationsværktøj til registrering af kost og næringsindtag.\n\n'
+                'Appen er ikke medicinsk udstyr og erstatter ikke rådgivning fra læge, diætist eller andre sundhedsfaglige personer.',
+              ),
+
+              const SizedBox(height: 16),
+
+              TextButton(
+                onPressed: () => _openUrl('https://toft-terman.dk/spisetavle'),
+                child: const Text('Support'),
+              ),
+
+              TextButton(
+                onPressed: () => _openUrl('https://toft-terman.dk/privacy'),
+                child: const Text('Privatlivspolitik'),
+              ),
+            ],
+          ),
         ),
         actions: [
           TextButton(
-            onPressed: Navigator.of(context).pop,
+            onPressed: () => Navigator.of(context).pop(),
             child: const Text('OK'),
           ),
         ],
@@ -452,12 +510,7 @@ DTU Fødevareinstituttet
             icon: const Icon(Icons.more_vert),
             onSelected: (value) async {
               if (value == 'calorie') {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const CalorieCalculatorScreen(),
-                  ),
-                );
+
                 final changed = await Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -494,7 +547,7 @@ DTU Fødevareinstituttet
                 setState(() {});
               }
               if (value == 'analyser_maaltid') {
-                Navigator.push(
+                final changed = await Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MealPhotoScreen(
@@ -504,6 +557,25 @@ DTU Fødevareinstituttet
                     ),
                   ),
                 );
+
+                if (changed == true) {
+                  setState(() {});
+                }
+              }
+              if (value == 'test_ai') {
+                final result = await Navigator.push<String>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) =>
+                        const AiMatchScreen(aiFood: 'grillet kylling'),
+                  ),
+                );
+
+                if (result != null && context.mounted) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('Valgt: $result')));
+                }
               }
             },
             itemBuilder: (context) => [
@@ -520,7 +592,10 @@ DTU Fødevareinstituttet
               PopupMenuItem(value: 'meals', child: Text('Måltider')),
               PopupMenuItem(value: 'users', child: Text('Brugeropsætning')),
               PopupMenuItem(value: 'calorie', child: Text('Kalorieberegner')),
-              PopupMenuItem(value: 'about', child: Text('Om')),
+              PopupMenuItem(
+                value: 'about',
+                child: Text('Datakilder og information'),
+              ),
             ],
           ),
         ],

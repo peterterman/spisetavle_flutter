@@ -6,6 +6,7 @@ import '../models/food_item.dart';
 import '../database/database_service.dart';
 import '../services/openai_service.dart';
 import 'input_screen.dart';
+import 'ai_match_screen.dart';
 
 class MealPhotoScreen extends StatefulWidget {
   final String user;
@@ -207,12 +208,28 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
 
       if (aiName.isEmpty || amount <= 0) continue;
 
-      var food = await DatabaseService.instance.getLocalFoodExact(aiName);
+      // 1. Prøv AI-alias først
+      final alias = await DatabaseService.instance.findBestAiAlias(aiName);
+
+      FoodItem? food;
+
+      // 2. Alias fundet
+      if (alias != null) {
+        food = await DatabaseService.instance.getFoodValues(alias);
+      }
+
+      // 3. Fallback til eksisterende logik
+      food ??= await DatabaseService.instance.getLocalFoodExact(aiName);
       food ??= await DatabaseService.instance.getFoodValues(aiName);
-
       if (food == null) {
-        food = await _chooseFridaFood(aiName);
+        final fridaName = await Navigator.push<String>(
+          context,
+          MaterialPageRoute(builder: (_) => AiMatchScreen(aiFood: aiName)),
+        );
 
+        if (fridaName != null) {
+          food = await DatabaseService.instance.getFoodValues(fridaName);
+        }
         if (!mounted) return;
 
         if (food == null) {
@@ -223,6 +240,8 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
           alias: aiName,
           food: food,
         );
+
+        await DatabaseService.instance.saveAiAlias(aiName, food.navn);
       }
 
       await DatabaseService.instance.insertFoodItemLogEntry(
@@ -251,7 +270,7 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
 
     if (!mounted) return;
 
-    Navigator.pop(context, result == true);
+    Navigator.pop(context, true);
   }
 
   @override
