@@ -141,6 +141,43 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
     );
   }
 
+
+  Future<bool> _showAiConsentDialog() async {
+    final result = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('AI-analyse af madfoto'),
+          content: const SingleChildScrollView(
+            child: Text(
+              'Hvis du fortsætter, sendes dit madfoto til SpiseTavles server '
+              'og videre til OpenAI API for at foreslå fødevarer og mængder.\n\n'
+              'Der sendes:\n'
+              '• madfotoet\n'
+              '• tekniske oplysninger nødvendige for analysen\n'
+              '• evt. valgt måltidstype\n\n'
+              'Der sendes ikke navn, e-mail eller loginoplysninger.\n\n'
+              'AI-analysen er frivillig. Du kan altid registrere maden manuelt uden AI.',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('Annuller'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('Send foto til AI-analyse'),
+            ),
+          ],
+        );
+      },
+    );
+
+    return result ?? false;
+  }
+
   Future<void> _takePhoto() async {
     final picker = ImagePicker();
 
@@ -154,6 +191,15 @@ class _MealPhotoScreenState extends State<MealPhotoScreen> {
         _image = File(photo.path);
         _foods.clear();
       });
+
+      final accepted = await _showAiConsentDialog();
+
+      if (!mounted) return;
+
+      if (!accepted) {
+        Navigator.pop(context);
+        return;
+      }
 
       await _analyzeWithAI();
     } else {

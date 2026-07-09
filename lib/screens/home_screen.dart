@@ -59,6 +59,42 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void showAboutDialogSpiseTavle() {
+    Widget sectionTitle(String text) {
+      return Padding(
+        padding: const EdgeInsets.only(top: 18, bottom: 6),
+        child: Text(
+          text,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+      );
+    }
+
+    Widget paragraph(String text) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Text(
+          text,
+          style: const TextStyle(height: 1.30),
+        ),
+      );
+    }
+
+    Widget linkButton(String text, String url) {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            minimumSize: const Size(0, 34),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            alignment: Alignment.centerLeft,
+          ),
+          onPressed: () => _openUrl(url),
+          child: Text(text),
+        ),
+      );
+    }
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -66,69 +102,136 @@ class _HomeScreenState extends State<HomeScreen> {
           'Datakilder og information',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'Version 3.0 - Flutter\n\n'
-                'Udviklet af Peter Terman Hansen',
-              ),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                paragraph('Version 3.0 - Flutter'),
+                paragraph('Udviklet af Peter Terman Hansen'),
 
-              const SizedBox(height: 16),
+                sectionTitle('Datakilder'),
 
-              const Text(
-                'Datakilder',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+                paragraph(
+                  'Næringsdata for fødevarer kommer fra FRIDA Fødevaredatabasen, '
+                  'version 5.4 (2025), udgivet af DTU Fødevareinstituttet, '
+                  'Danmarks Tekniske Universitet.',
+                ),
 
-              TextButton(
-                onPressed: () => _openUrl('https://frida.fooddata.dk'),
-                child: const Text('FRIDA Fødevaredatabasen'),
-              ),
+                paragraph(
+                  'FRIDA indeholder oplysninger om energi, protein, fedt, '
+                  'kulhydrat, vitaminer, mineraler og andre næringsstoffer '
+                  'i fødevarer.',
+                ),
 
-              const Text(
-                'Version 5.4 (2025)\n'
-                'DTU Fødevareinstituttet\n'
-                'Danmarks Tekniske Universitet',
-              ),
+                linkButton(
+                  'FRIDA Fødevaredatabasen',
+                  'https://frida.fooddata.dk',
+                ),
 
-              const SizedBox(height: 16),
+                linkButton(
+                  'DTU Fødevareinstituttet - Food Data Database',
+                  'https://www.food.dtu.dk/english/about-us/facilities-and-infrastructure/food-data-database-on-nutrients-in-food',
+                ),
 
-              const Text(
-                'Beregninger',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+                sectionTitle('Generel kostinformation'),
 
-              const Text(
-                'Kalorier, protein, fedt og kulhydrater beregnes på baggrund af de registrerede fødevarer og værdierne i FRIDA-databasen.',
-              ),
+                paragraph(
+                  'Generel information om kost og ernæring henviser til '
+                  'Fødevarestyrelsens officielle kostråd og Nordic Nutrition '
+                  'Recommendations 2023.',
+                ),
 
-              const SizedBox(height: 16),
+                linkButton(
+                  'De officielle Kostråd - Fødevarestyrelsen',
+                  'https://foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/de-officielle-kostraad',
+                ),
 
-              const Text(
-                'Ansvarsfraskrivelse',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+                linkButton(
+                  'Nordic Nutrition Recommendations 2023',
+                  'https://www.norden.org/en/publication/nordic-nutrition-recommendations-2023',
+                ),
 
-              const Text(
-                'SpiseTavle er et informationsværktøj til registrering af kost og næringsindtag.\n\n'
-                'Appen er ikke medicinsk udstyr og erstatter ikke rådgivning fra læge, diætist eller andre sundhedsfaglige personer.',
-              ),
+                sectionTitle('Beregninger i appen'),
 
-              const SizedBox(height: 16),
+                paragraph(
+                  'Kalorier, protein, fedt og kulhydrater beregnes på baggrund '
+                  'af de fødevarer og mængder, brugeren registrerer i appen, '
+                  'sammenholdt med næringsværdierne i FRIDA-databasen.',
+                ),
 
-              TextButton(
-                onPressed: () => _openUrl('https://toft-terman.dk/spisetavle'),
-                child: const Text('Support'),
-              ),
+                paragraph(
+                  'Resultaterne er vejledende. De kan afvige fra faktiske '
+                  'fødevarer, portionsstørrelser, tilberedning, opskrifter '
+                  'og mærkevarespecifikke oplysninger.',
+                ),
 
-              TextButton(
-                onPressed: () => _openUrl('https://toft-terman.dk/privacy'),
-                child: const Text('Privatlivspolitik'),
-              ),
-            ],
+                sectionTitle('Kalorieberegner'),
+
+                paragraph(
+                  'Kalorieberegneren giver kun et vejledende estimat. '
+                  'Basalstofskifte beregnes med Mifflin-St Jeor-formlen. '
+                  'Aktivitetsniveau, vægtmål, protein, fedt og kulhydrat '
+                  'beregnes som praktiske estimater og er ikke individuel '
+                  'sundhedsrådgivning.',
+                ),
+
+                linkButton(
+                  'Mifflin-St Jeor-formlen - PubMed',
+                  'https://pubmed.ncbi.nlm.nih.gov/2305711/',
+                ),
+
+                sectionTitle('AI-billedanalyse'),
+
+                paragraph(
+                  'Hvis AI-billedanalyse anvendes, er resultatet kun et '
+                  'estimat. Brugeren skal selv kontrollere og eventuelt rette '
+                  'fødevarer og mængder, før oplysningerne gemmes.',
+                ),
+
+                sectionTitle('Ansvarsfraskrivelse'),
+
+                paragraph(
+                  'SpiseTavle er et informationsværktøj til registrering af '
+                  'kost og næringsindtag.',
+                ),
+
+                paragraph(
+                  'Appen er ikke medicinsk udstyr og erstatter ikke rådgivning '
+                  'fra læge, diætist eller andre sundhedsfaglige personer.',
+                ),
+
+                paragraph(
+                  'Appen stiller ikke diagnoser, vurderer ikke sygdomme og '
+                  'giver ikke behandlingsråd.',
+                ),
+
+                paragraph(
+                  'Kontakt læge, diætist eller anden relevant sundhedsfaglig '
+                  'person ved spørgsmål om sygdom, behandling, vægttab, '
+                  'ernæringsbehov eller kostændringer.',
+                ),
+
+                sectionTitle('Support og privatliv'),
+
+                paragraph(
+                  'Spørgsmål, fejlmeldinger og support kan sendes via '
+                  'SpiseTavles supportside.',
+                ),
+
+                linkButton(
+                  'SpiseTavle support',
+                  'https://toft-terman.dk/spisetavle-support.php',
+                ),
+
+                linkButton(
+                  'Privatlivspolitik',
+                  'https://toft-terman.dk/privacy.php',
+                ),
+              ],
+            ),
           ),
         ),
         actions: [

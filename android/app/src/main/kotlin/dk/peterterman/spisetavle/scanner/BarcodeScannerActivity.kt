@@ -1,4 +1,4 @@
-package com.example.spisetavle_flutter.scanner
+package dk.peterterman.spisetavle.scanner
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import android.Manifest
 import android.content.pm.PackageManager
-import com.example.spisetavle_flutter.R
+import dk.peterterman.spisetavle.R
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 

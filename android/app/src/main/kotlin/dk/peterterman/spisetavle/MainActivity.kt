@@ -1,4 +1,4 @@
-package com.example.spisetavle_flutter
+package dk.peterterman.spisetavle
 
 import io.flutter.embedding.android.FlutterActivity
 

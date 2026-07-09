@@ -1,4 +1,4 @@
-package com.example.spisetavle_flutter.scanner
+package dk.peterterman.spisetavle.scanner
 
 import android.content.Context
 import android.graphics.*
